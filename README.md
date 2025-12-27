@@ -1,8 +1,18 @@
 <img width="1943" height="1093" alt="image" src="https://github.com/user-attachments/assets/cc2ff955-17c2-48c7-81c8-479a0f061850" />
 
+# Bix's Portfolio
+
+This is my personal adaptation of the [DevPortfolio template](https://github.com/RyanFitzgerald/devportfolio) by Ryan Fitzgerald. I've added dark mode support and made various styling and functionality tweaks.
+
+---
+
+*The documentation below is adapted from the original project README.*
+
+---
+
 # DevPortfolio Template
 
-A modern, minimalist portfolio template built with Astro and Tailwind CSS. Perfect for developers looking to showcase their skills, experience, and projects in a clean, professional way.
+A modern, minimalist portfolio template built with Astro and Tailwind CSS. Perfect for developers looking to showcase their skills, experience, and projects in a clean, professional way. Supports light and dark modes.
 
 This was completely rebuilt from the ground up from V1. This template was built to be entirely ready to go with a quick config edit (see below) but also provides the ability to easily extend in whatever way you want.
 
@@ -30,8 +40,8 @@ To view a live preview of the site, [click here](https://ryanfitzgerald.github.i
 The template is designed to be easily customizable through the `src/config.ts` file. This single file controls:
 
 - **Personal Information**: Name, title, description
-- **Accent Color**: Primary color theme (changing this will change the accent color site wide)
-- **Social Links**: Email, LinkedIn, Twitter, GitHub (all optional)
+- **Accent Color**: Primary color theme for light and dark modes (`accentColor` and `darkAccentColor`)
+- **Social Links**: Email, LinkedIn, GitHub (all optional)
 - **About Section**: Personal bio/description
 - **Skills**: List of technical skills
 - **Projects**: Project showcase with descriptions and links
@@ -50,7 +60,8 @@ Here's what the config data structure looks like for each section:
 name: "Your Name",
 title: "Your Job Title",
 description: "Brief site description",
-accentColor: "#1d4ed8", // Hex color for theme
+accentColor: "#007A6A",     // Hex color for light mode
+darkAccentColor: "#00B5A0", // Hex color for dark mode (brighter for visibility)
 ```
 
 #### Social Links (all optional)
@@ -59,7 +70,6 @@ accentColor: "#1d4ed8", // Hex color for theme
 social: {
   email: "your-email@example.com",
   linkedin: "https://linkedin.com/in/yourprofile",
-  twitter: "https://twitter.com/yourprofile",
   github: "https://github.com/yourusername",
 }
 ```
@@ -139,17 +149,17 @@ devportfolio/
 │   │   ├── Education.astro  # Education section
 │   │   ├── Experience.astro # Work experience section
 │   │   ├── Footer.astro     # Site footer
-│   │   ├── Header.astro     # Navigation header
-│   │   ├── Hero.astro       # Hero/intro section
-│   │   └── Projects.astro   # Projects showcase
+│   │   ├── Header.astro     # Navigation header (includes dark mode toggle)
+│   │   ├── Hero.astro       # Hero/intro section with contact cards
+│   │   ├── Projects.astro   # Projects showcase
+│   │   └── ThemeToggle.astro # Mobile dark mode toggle button
 │   ├── pages/
-│   │   └── index.astro      # Main page layout
+│   │   └── index.astro      # Main page layout (includes theme init script)
 │   ├── styles/
-│   │   └── global.css       # Global styles
+│   │   └── global.css       # Global styles + Tailwind v4 dark mode config
 │   └── config.ts            # Site configuration
 ├── astro.config.mjs         # Astro configuration
 ├── package.json             # Project dependencies
-├── tailwind.config.js       # Tailwind configuration
 └── tsconfig.json            # TypeScript configuration
 ```
 

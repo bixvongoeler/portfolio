@@ -122,146 +122,331 @@ import { siteConfig } from "../config";
     <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
         <div>
             <h2
-                class="text-pretty text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-gray-700 dark:text-slate-300 animate-fade-in"
+                class="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-700 dark:text-slate-300 animate-fade-in"
             >
                 {siteConfig.greeting}
             </h2>
             <h1
-                class="mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 dark:text-slate-100 animate-fade-in animation-delay-200"
+                class="mt-[clamp(0.5rem,2vw,2rem)] whitespace-nowrap font-bold tracking-tight text-gray-800 dark:text-slate-100 animate-fade-in animation-delay-200"
             >
-                <span class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl">I'm</span>
-                <span class="text-[var(--accent-color)]">{siteConfig.name}</span>
+                <span class="text-[clamp(1.5rem,5vw,4rem)]">I'm </span>
+                <span class="text-[clamp(2.5rem,8vw,6rem)] text-[var(--accent-color)]">{siteConfig.name}</span>
             </h1>
             <p
-                class="mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 dark:text-slate-400 animate-fade-in animation-delay-400 text-right"
+                class="mt-[clamp(0.5rem,2vw,2rem)] text-[clamp(0.875rem,2vw,1.25rem)] font-medium text-gray-600 dark:text-slate-400 animate-fade-in animation-delay-400 text-right"
             >
                 {siteConfig.title}
             </p>
         </div>
     </div>
+    <!-- Contact Cards -->
     <div
-        class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 dark:text-slate-300 animate-fade-in animation-delay-600"
+        class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 animate-fade-in animation-delay-600"
     >
-        {
-            siteConfig.social?.email && (
-                <a
-                    href={`mailto:${siteConfig.social.email}`}
-                    aria-label="Email"
-                    class="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+        <!-- Horizontal layout (default), stacked on mobile -->
+        <div class="hidden sm:flex justify-center gap-4 md:gap-6">
+            {
+                siteConfig.social?.github && (
+                    <a
+                        href={siteConfig.social.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-4 md:px-5 py-2.5 md:py-3 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
                     >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-                        <path d="M3 7l9 6l9 -6" />
-                    </svg>
-                </a>
-            )
-        }
-        {
-            siteConfig.social?.linkedin && (
-                <a
-                    href={siteConfig.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    class="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                        <span class="text-sm md:text-base font-medium">GitHub</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-4 h-4 md:w-5 md:h-5 transition-colors group-hover:text-[var(--accent-color)]"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                        </svg>
+                    </a>
+                )
+            }
+            {
+                siteConfig.social?.linkedin && (
+                    <a
+                        href={siteConfig.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-4 md:px-5 py-2.5 md:py-3 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
                     >
-                        <>
+                        <span class="text-sm md:text-base font-medium">LinkedIn</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-4 h-4 md:w-5 md:h-5 transition-colors group-hover:text-[var(--accent-color)]"
+                        >
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M8 11v5" />
                             <path d="M8 8v.01" />
                             <path d="M12 16v-5" />
                             <path d="M16 16v-3a2 2 0 1 0 -4 0" />
                             <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />
-                        </>
-                    </svg>
-                </a>
-            )
-        }
-        {
-            siteConfig.social?.twitter && (
-                <a
-                    href={siteConfig.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Twitter"
-                    class="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                        </svg>
+                    </a>
+                )
+            }
+            {
+                siteConfig.social?.email && (
+                    <button
+                        id="email-copy-btn"
+                        data-email={siteConfig.social.email}
+                        type="button"
+                        class="group flex items-center px-4 md:px-5 py-2.5 md:py-3 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
                     >
-                        <>
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                        </>
-                    </svg>
-                </a>
-            )
-        }
-        {
-            siteConfig.social?.github && (
-                <a
-                    href={siteConfig.social.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    class="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                        <span id="email-text" class="flex-1 text-sm md:text-base font-medium text-left">{siteConfig.social.email}</span>
+                        <span id="email-icons" class="w-4 h-4 md:w-5 md:h-5 ml-3 flex items-center justify-center relative">
+                            <svg
+                                id="email-icon-mail"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="absolute inset-0 w-full h-full group-hover:opacity-0 transition-all"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                                <path d="M3 7l9 6l9 -6" />
+                            </svg>
+                            <svg
+                                id="email-icon-copy"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 group-hover:text-[var(--accent-color)] transition-all"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+                                <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+                            </svg>
+                            <svg
+                                id="email-icon-check"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="absolute inset-0 w-full h-full opacity-0 text-green-500 transition-opacity"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 12l5 5l10 -10" />
+                            </svg>
+                        </span>
+                    </button>
+                )
+            }
+        </div>
+        <!-- Stacked layout (mobile only) -->
+        <div class="flex sm:hidden flex-col items-center gap-3">
+            <!-- GitHub + LinkedIn row -->
+            <div class="flex justify-center gap-3 w-full max-w-xs">
+                {
+                    siteConfig.social?.github && (
+                        <a
+                            href={siteConfig.social.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
+                        >
+                            <span class="text-xs font-medium">GitHub</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-4 h-4 transition-colors group-hover:text-[var(--accent-color)]"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                            </svg>
+                        </a>
+                    )
+                }
+                {
+                    siteConfig.social?.linkedin && (
+                        <a
+                            href={siteConfig.social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
+                        >
+                            <span class="text-xs font-medium">LinkedIn</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-4 h-4 transition-colors group-hover:text-[var(--accent-color)]"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M8 11v5" />
+                                <path d="M8 8v.01" />
+                                <path d="M12 16v-5" />
+                                <path d="M16 16v-3a2 2 0 1 0 -4 0" />
+                                <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />
+                            </svg>
+                        </a>
+                    )
+                }
+            </div>
+            <!-- Email row (full width to match above) -->
+            {
+                siteConfig.social?.email && (
+                    <button
+                        id="email-copy-btn-mobile"
+                        data-email={siteConfig.social.email}
+                        type="button"
+                        class="group flex items-center justify-center gap-2 px-3 py-2 w-full max-w-xs bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
                     >
-                        <>
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-                        </>
-                    </svg>
-                </a>
-            )
-        }
+                        <span id="email-text-mobile" class="text-xs font-medium">{siteConfig.social.email}</span>
+                        <span class="w-4 h-4 flex items-center justify-center relative">
+                            <svg
+                                id="email-icon-mail-mobile"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="absolute inset-0 w-full h-full group-hover:opacity-0 transition-all"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                                <path d="M3 7l9 6l9 -6" />
+                            </svg>
+                            <svg
+                                id="email-icon-copy-mobile"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 group-hover:text-[var(--accent-color)] transition-all"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+                                <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+                            </svg>
+                            <svg
+                                id="email-icon-check-mobile"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="absolute inset-0 w-full h-full opacity-0 text-green-500 transition-opacity"
+                            >
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 12l5 5l10 -10" />
+                            </svg>
+                        </span>
+                    </button>
+                )
+            }
+        </div>
     </div>
 </div>
+
+<script>
+    // Helper to setup email copy functionality for a button
+    function setupEmailCopy(btnId: string, textId: string, mailId: string, copyId: string, checkId: string) {
+        const btn = document.getElementById(btnId);
+        const text = document.getElementById(textId);
+        const iconMail = document.getElementById(mailId);
+        const iconCopy = document.getElementById(copyId);
+        const iconCheck = document.getElementById(checkId);
+
+        if (btn && text && iconMail && iconCopy && iconCheck) {
+            const originalEmail = btn.dataset.email || '';
+            const initialWidth = btn.offsetWidth;
+            btn.style.minWidth = `${initialWidth}px`;
+
+            btn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(originalEmail);
+                    text.textContent = 'Copied!';
+                    text.classList.remove('text-left');
+                    text.classList.add('text-center');
+                    iconMail.style.opacity = '0';
+                    iconCopy.style.opacity = '0';
+                    iconMail.classList.remove('group-hover:opacity-0');
+                    iconCopy.classList.remove('group-hover:opacity-100');
+                    iconCheck.style.opacity = '1';
+
+                    setTimeout(() => {
+                        text.textContent = originalEmail;
+                        text.classList.remove('text-center');
+                        text.classList.add('text-left');
+                        iconMail.style.opacity = '';
+                        iconCopy.style.opacity = '';
+                        iconMail.classList.add('group-hover:opacity-0');
+                        iconCopy.classList.add('group-hover:opacity-100');
+                        iconCheck.style.opacity = '0';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy email:', err);
+                }
+            });
+        }
+    }
+
+    // Setup both desktop and mobile email buttons
+    setupEmailCopy('email-copy-btn', 'email-text', 'email-icon-mail', 'email-icon-copy', 'email-icon-check');
+    setupEmailCopy('email-copy-btn-mobile', 'email-text-mobile', 'email-icon-mail-mobile', 'email-icon-copy-mobile', 'email-icon-check-mobile');
+</script>
 
 <style>
     @keyframes fadeIn {
