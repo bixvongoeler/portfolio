@@ -6,6 +6,7 @@ import Projects from "../components/Projects.astro";
 import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
 ---
@@ -17,6 +18,20 @@ import "../styles/global.css";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={siteConfig.description} />
+        <!-- Theme initialization - MUST be inline and blocking to prevent FOWT -->
+        <script is:inline>
+            (function() {
+                const stored = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = stored || (prefersDark ? 'dark' : 'light');
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+                window.__setTheme = (t) => {
+                    document.documentElement.classList.toggle('dark', t === 'dark');
+                    localStorage.setItem('theme', t);
+                };
+                window.__getTheme = () => document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            })();
+        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -24,9 +39,18 @@ import "../styles/global.css";
             rel="stylesheet"
         />
         <title>{siteConfig.name} - {siteConfig.title}</title>
+        <style define:vars={{ accentLight: siteConfig.accentColor, accentDark: siteConfig.darkAccentColor }}>
+            :root {
+                --accent-color: var(--accentLight);
+            }
+            .dark {
+                --accent-color: var(--accentDark);
+            }
+        </style>
     </head>
     <body>
         <Header />
+        <ThemeToggle />
         <section>
             <Hero />
             <About />

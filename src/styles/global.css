@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
     font-family: "IBM Plex Mono", monospace;
+    @apply bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-50;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

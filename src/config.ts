@@ -4,6 +4,7 @@ export const siteConfig = {
     title: "Software Engineer & Comp-Sci Undergrad at Tufts",
     description: "portfolio website of William Bix von Goeler",
     accentColor: "#007A6A",
+    darkAccentColor: "#00B5A0",
     social: {
         email: "your-email@example.com",
         linkedin: "https://linkedin.com/in/yourprofile",

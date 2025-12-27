@@ -4,18 +4,23 @@ import { siteConfig } from "../config";
 
 <div
     id="hero"
-    class="relative isolate overflow-hidden bg-white py-24 md:h-screen"
-    style={`--accent-color: ${siteConfig.accentColor}`}
+    class="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-24 md:h-screen"
 >
-    <!-- Gradient overlay -->
+    <!-- Light mode gradient overlay -->
     <div
-        class="absolute inset-0 -z-10"
+        class="absolute inset-0 -z-10 dark:hidden"
         style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}25 20%, ${siteConfig.accentColor}10 40%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0.8) 90%, white 100%)`}
+    >
+    </div>
+    <!-- Dark mode gradient overlay -->
+    <div
+        class="absolute inset-0 -z-10 hidden dark:block"
+        style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.darkAccentColor}30 0%, ${siteConfig.darkAccentColor}15 20%, ${siteConfig.darkAccentColor}05 40%, rgba(15, 23, 42, 0.3) 70%, rgba(15, 23, 42, 0.8) 90%, #0f172a 100%)`}
     >
     </div>
     <svg
         aria-hidden="true"
-        class="absolute inset-0 -z-10 size-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+        class="absolute inset-0 -z-10 size-full stroke-gray-200 dark:stroke-slate-700 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
     >
         <defs>
             <pattern
@@ -32,7 +37,7 @@ import { siteConfig } from "../config";
                 <text
                     x="50"
                     y="50"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="24"
                     transform="rotate(-15)">&lt;/&gt;</text
@@ -40,7 +45,7 @@ import { siteConfig } from "../config";
                 <text
                     x="150"
                     y="100"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="20"
                     transform="rotate(10)">{}</text
@@ -48,7 +53,7 @@ import { siteConfig } from "../config";
                 <text
                     x="250"
                     y="80"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="18"
                     transform="rotate(-5)">=&gt;</text
@@ -56,7 +61,7 @@ import { siteConfig } from "../config";
                 <text
                     x="100"
                     y="200"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="22"
                     transform="rotate(15)">[]</text
@@ -64,7 +69,7 @@ import { siteConfig } from "../config";
                 <text
                     x="300"
                     y="180"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="20"
                     transform="rotate(-10)">&lt;&gt;</text
@@ -72,7 +77,7 @@ import { siteConfig } from "../config";
                 <text
                     x="200"
                     y="250"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="24"
                     transform="rotate(5)">()</text
@@ -80,7 +85,7 @@ import { siteConfig } from "../config";
                 <text
                     x="50"
                     y="320"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="18"
                     transform="rotate(-8)">::</text
@@ -88,7 +93,7 @@ import { siteConfig } from "../config";
                 <text
                     x="350"
                     y="300"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="22"
                     transform="rotate(12)">==</text
@@ -96,7 +101,7 @@ import { siteConfig } from "../config";
                 <text
                     x="150"
                     y="350"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="20"
                     transform="rotate(-15)">++</text
@@ -104,7 +109,7 @@ import { siteConfig } from "../config";
                 <text
                     x="250"
                     y="370"
-                    fill={siteConfig.accentColor}
+                    class="fill-[var(--accent-color)]"
                     font-family="monospace"
                     font-size="24"
                     transform="rotate(8)">;</text
@@ -117,25 +122,25 @@ import { siteConfig } from "../config";
     <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
         <div>
             <h2
-                class="text-pretty text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-gray-700 animate-fade-in"
+                class="text-pretty text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-gray-700 dark:text-slate-300 animate-fade-in"
             >
                 {siteConfig.greeting}
             </h2>
             <h1
-                class="mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
+                class="mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 dark:text-slate-100 animate-fade-in animation-delay-200"
             >
                 <span class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl">I'm</span>
-                <span style={{ color: siteConfig.accentColor }}>{siteConfig.name}</span>
+                <span class="text-[var(--accent-color)]">{siteConfig.name}</span>
             </h1>
             <p
-                class="mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 animate-fade-in animation-delay-400 text-right"
+                class="mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 dark:text-slate-400 animate-fade-in animation-delay-400 text-right"
             >
                 {siteConfig.title}
             </p>
         </div>
     </div>
     <div
-        class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
+        class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 dark:text-slate-300 animate-fade-in animation-delay-600"
     >
         {
             siteConfig.social?.email && (
