@@ -1,9 +1,9 @@
 export const siteConfig = {
-    name: "bix von goeler",
-    greeting: "hi there,",
-    title: "software engineer & comp-sci undergraduate at tufts university",
-    description: "portfolio website of william bix von goeler",
-    accentColor: "#00EbAf",
+    name: "Bix von Goeler",
+    greeting: "Hey there, 👋",
+    title: "Software Engineer & Comp-Sci Undergrad at Tufts",
+    description: "portfolio website of William Bix von Goeler",
+    accentColor: "#007A6A",
     social: {
         email: "your-email@example.com",
         linkedin: "https://linkedin.com/in/yourprofile",
