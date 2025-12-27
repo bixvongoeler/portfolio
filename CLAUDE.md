@@ -47,6 +47,7 @@ The project follows a component-based architecture with all customization centra
 ## Working with Components
 
 When modifying components:
+
 1. Components read directly from the imported `siteConfig` object
 2. Use Tailwind utility classes for styling
 3. Maintain the existing monospace font aesthetic
@@ -55,6 +56,7 @@ When modifying components:
 ## Configuration Structure
 
 The `src/config.ts` exports a `siteConfig` object with these sections:
+
 - Basic info: name, title, description, accentColor
 - Social links: email, linkedin, twitter, github (all optional)
 - aboutMe: string
