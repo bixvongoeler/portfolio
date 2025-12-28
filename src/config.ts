@@ -7,9 +7,8 @@ export const siteConfig = {
     darkAccentColor: "#00B5A0",
     social: {
         email: "bixvongoeler@gmail.com",
-        linkedin: "https://linkedin.com/in/yourprofile",
-        twitter: "https://x.com/rfitzio",
-        github: "https://github.com/RyanFitzgerald",
+        linkedin: "https://www.linkedin.com/in/bix-von-goeler-60ba5b236/",
+        github: "https://github.com/bixvongoeler",
     },
     aboutMe:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",

@@ -2,10 +2,7 @@
 import { siteConfig } from "../config";
 ---
 
-<div
-    id="hero"
-    class="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-24 md:h-screen"
->
+<div id="hero" class="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-36 md:h-screen">
     <!-- Light mode gradient overlay -->
     <div
         class="absolute inset-0 -z-10 dark:hidden"
@@ -122,7 +119,7 @@ import { siteConfig } from "../config";
     <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
         <div>
             <h2
-                class="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-700 dark:text-slate-300 animate-fade-in"
+                class="text-[clamp(1.0rem,3vw,1.875rem)] font-bold tracking-tight text-gray-700 dark:text-slate-300 animate-fade-in"
             >
                 {siteConfig.greeting}
             </h2>
@@ -130,7 +127,7 @@ import { siteConfig } from "../config";
                 class="mt-[clamp(0.5rem,2vw,2rem)] whitespace-nowrap font-bold tracking-tight text-gray-800 dark:text-slate-100 animate-fade-in animation-delay-200"
             >
                 <span class="text-[clamp(1.5rem,5vw,4rem)]">I'm </span>
-                <span class="text-[clamp(2.5rem,8vw,6rem)] text-[var(--accent-color)]">{siteConfig.name}</span>
+                <span class="text-[clamp(1.75rem,8vw,6rem)] text-[var(--accent-color)]">{siteConfig.name}</span>
             </h1>
             <p
                 class="mt-[clamp(0.5rem,2vw,2rem)] text-[clamp(0.875rem,2vw,1.25rem)] font-medium text-gray-600 dark:text-slate-400 animate-fade-in animation-delay-400 text-right"
@@ -140,9 +137,7 @@ import { siteConfig } from "../config";
         </div>
     </div>
     <!-- Contact Cards -->
-    <div
-        class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 animate-fade-in animation-delay-600"
-    >
+    <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 animate-fade-in animation-delay-600">
         <!-- Horizontal layout (default), stacked on mobile -->
         <div class="hidden sm:flex justify-center gap-4 md:gap-6">
             {
@@ -211,8 +206,13 @@ import { siteConfig } from "../config";
                         type="button"
                         class="group flex items-center px-4 md:px-5 py-2.5 md:py-3 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
                     >
-                        <span id="email-text" class="flex-1 text-sm md:text-base font-medium text-left">{siteConfig.social.email}</span>
-                        <span id="email-icons" class="w-4 h-4 md:w-5 md:h-5 ml-3 flex items-center justify-center relative">
+                        <span id="email-text" class="flex-1 text-sm md:text-base font-medium text-left">
+                            {siteConfig.social.email}
+                        </span>
+                        <span
+                            id="email-icons"
+                            class="w-4 h-4 md:w-5 md:h-5 ml-3 flex items-center justify-center relative"
+                        >
                             <svg
                                 id="email-icon-mail"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +340,9 @@ import { siteConfig } from "../config";
                         type="button"
                         class="group flex items-center justify-center gap-2 px-3 py-2 w-full max-w-xs bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
                     >
-                        <span id="email-text-mobile" class="text-xs font-medium">{siteConfig.social.email}</span>
+                        <span id="email-text-mobile" class="text-xs font-medium">
+                            {siteConfig.social.email}
+                        </span>
                         <span class="w-4 h-4 flex items-center justify-center relative">
                             <svg
                                 id="email-icon-mail-mobile"
@@ -410,42 +412,48 @@ import { siteConfig } from "../config";
         const iconCheck = document.getElementById(checkId);
 
         if (btn && text && iconMail && iconCopy && iconCheck) {
-            const originalEmail = btn.dataset.email || '';
+            const originalEmail = btn.dataset.email || "";
             const initialWidth = btn.offsetWidth;
             btn.style.minWidth = `${initialWidth}px`;
 
-            btn.addEventListener('click', async () => {
+            btn.addEventListener("click", async () => {
                 try {
                     await navigator.clipboard.writeText(originalEmail);
-                    text.textContent = 'Copied!';
-                    text.classList.remove('text-left');
-                    text.classList.add('text-center');
-                    iconMail.style.opacity = '0';
-                    iconCopy.style.opacity = '0';
-                    iconMail.classList.remove('group-hover:opacity-0');
-                    iconCopy.classList.remove('group-hover:opacity-100');
-                    iconCheck.style.opacity = '1';
+                    text.textContent = "Copied!";
+                    text.classList.remove("text-left");
+                    text.classList.add("text-center");
+                    iconMail.style.opacity = "0";
+                    iconCopy.style.opacity = "0";
+                    iconMail.classList.remove("group-hover:opacity-0");
+                    iconCopy.classList.remove("group-hover:opacity-100");
+                    iconCheck.style.opacity = "1";
 
                     setTimeout(() => {
                         text.textContent = originalEmail;
-                        text.classList.remove('text-center');
-                        text.classList.add('text-left');
-                        iconMail.style.opacity = '';
-                        iconCopy.style.opacity = '';
-                        iconMail.classList.add('group-hover:opacity-0');
-                        iconCopy.classList.add('group-hover:opacity-100');
-                        iconCheck.style.opacity = '0';
+                        text.classList.remove("text-center");
+                        text.classList.add("text-left");
+                        iconMail.style.opacity = "";
+                        iconCopy.style.opacity = "";
+                        iconMail.classList.add("group-hover:opacity-0");
+                        iconCopy.classList.add("group-hover:opacity-100");
+                        iconCheck.style.opacity = "0";
                     }, 2000);
                 } catch (err) {
-                    console.error('Failed to copy email:', err);
+                    console.error("Failed to copy email:", err);
                 }
             });
         }
     }
 
     // Setup both desktop and mobile email buttons
-    setupEmailCopy('email-copy-btn', 'email-text', 'email-icon-mail', 'email-icon-copy', 'email-icon-check');
-    setupEmailCopy('email-copy-btn-mobile', 'email-text-mobile', 'email-icon-mail-mobile', 'email-icon-copy-mobile', 'email-icon-check-mobile');
+    setupEmailCopy("email-copy-btn", "email-text", "email-icon-mail", "email-icon-copy", "email-icon-check");
+    setupEmailCopy(
+        "email-copy-btn-mobile",
+        "email-text-mobile",
+        "email-icon-mail-mobile",
+        "email-icon-copy-mobile",
+        "email-icon-check-mobile",
+    );
 </script>
 
 <style>
