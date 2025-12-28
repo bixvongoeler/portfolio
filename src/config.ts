@@ -1,5 +1,8 @@
 export const siteConfig = {
-    name: "Bix von Goeler",
+    name: "Bix",
+    fullName: "William Bix von Goeler",
+    pronouns: "he/him",
+    profilePhoto: "/profile.jpeg",
     greeting: "Hey there, 👋",
     title: "Software Engineer & Comp-Sci Undergrad at Tufts",
     description: "portfolio website of William Bix von Goeler",
