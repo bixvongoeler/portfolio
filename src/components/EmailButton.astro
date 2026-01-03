@@ -1,0 +1,93 @@
+---
+import MailIcon from "../icons/mail.svg";
+import CopyIcon from "../icons/copy.svg";
+import CheckIcon from "../icons/check.svg";
+
+interface Props {
+    email: string;
+    size?: "sm" | "md";
+}
+
+const { email, size = "md" } = Astro.props;
+
+const sizeClasses = {
+    sm: {
+        button: "px-3 py-2",
+        text: "text-xs",
+        iconWrapper: "w-3.5 h-3.5",
+    },
+    md: {
+        button: "px-4 py-2",
+        text: "text-sm",
+        iconWrapper: "w-4 h-4",
+    },
+};
+
+const classes = sizeClasses[size];
+---
+
+<button
+    type="button"
+    data-email-copy
+    data-email={email}
+    class:list={[
+        "group flex items-center gap-2 w-fit bg-gray-50 dark:bg-slate-800 rounded-xl",
+        "border border-gray-200 dark:border-slate-700",
+        "text-gray-700 dark:text-slate-300",
+        "transition-all duration-300",
+        "hover:bg-white dark:hover:bg-slate-900",
+        "hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500",
+        "hover:-translate-y-0.5",
+        classes.button,
+    ]}
+>
+    <span data-email-text class:list={["font-medium", classes.text]}>
+        {email}
+    </span>
+    <span class:list={["flex items-center justify-center relative", classes.iconWrapper]}>
+        <MailIcon data-icon-mail class="absolute inset-0 w-full h-full group-hover:opacity-0 transition-all" />
+        <CopyIcon
+            data-icon-copy
+            class="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 group-hover:text-[var(--accent-color)] transition-all"
+        />
+        <CheckIcon data-icon-check class="absolute inset-0 w-full h-full opacity-0 text-green-500 transition-opacity" />
+    </span>
+</button>
+
+<script>
+    // Setup email copy functionality for all email buttons
+    document.querySelectorAll("[data-email-copy]").forEach((btn) => {
+        const button = btn as HTMLButtonElement;
+        const text = button.querySelector("[data-email-text]") as HTMLElement;
+        const iconMail = button.querySelector("[data-icon-mail]") as HTMLElement;
+        const iconCopy = button.querySelector("[data-icon-copy]") as HTMLElement;
+        const iconCheck = button.querySelector("[data-icon-check]") as HTMLElement;
+
+        if (text && iconMail && iconCopy && iconCheck) {
+            const originalEmail = button.dataset.email || "";
+
+            button.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(originalEmail);
+                    text.textContent = "Copied!";
+                    iconMail.style.opacity = "0";
+                    iconCopy.style.opacity = "0";
+                    iconMail.classList.remove("group-hover:opacity-0");
+                    iconCopy.classList.remove("group-hover:opacity-100");
+                    iconCheck.style.opacity = "1";
+
+                    setTimeout(() => {
+                        text.textContent = originalEmail;
+                        iconMail.style.opacity = "";
+                        iconCopy.style.opacity = "";
+                        iconMail.classList.add("group-hover:opacity-0");
+                        iconCopy.classList.add("group-hover:opacity-100");
+                        iconCheck.style.opacity = "0";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Failed to copy email:", err);
+                }
+            });
+        }
+    });
+</script>

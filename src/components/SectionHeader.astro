@@ -1,0 +1,14 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="lg:col-span-4">
+    <h2 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-50">
+        {title}
+    </h2>
+    <div class="w-[75px] h-[5px] mt-2 rounded-full bg-[var(--accent-color)]"></div>
+</div>

@@ -2,11 +2,12 @@
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
 import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
+import Hobbies from "../components/Hobbies.astro";
 import Footer from "../components/Footer.astro";
-import ThemeToggle from "../components/ThemeToggle.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
 ---
@@ -20,28 +21,28 @@ import "../styles/global.css";
         <meta name="description" content={siteConfig.description} />
         <!-- Theme initialization - MUST be inline and blocking to prevent FOWT -->
         <script is:inline>
-            (function() {
-                const stored = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            (function () {
+                const stored = localStorage.getItem("theme");
+                const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
                 // Only use stored if user explicitly set it, otherwise follow system
-                const theme = stored || (prefersDark ? 'dark' : 'light');
-                document.documentElement.classList.toggle('dark', theme === 'dark');
+                const theme = stored || (prefersDark ? "dark" : "light");
+                document.documentElement.classList.toggle("dark", theme === "dark");
 
                 // Called when user explicitly toggles - saves preference
                 window.__setTheme = (t, userToggled) => {
-                    document.documentElement.classList.toggle('dark', t === 'dark');
+                    document.documentElement.classList.toggle("dark", t === "dark");
                     if (userToggled) {
-                        localStorage.setItem('theme', t);
+                        localStorage.setItem("theme", t);
                     }
                 };
 
-                window.__getTheme = () => document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                window.__getTheme = () => (document.documentElement.classList.contains("dark") ? "dark" : "light");
 
                 // Listen for system preference changes
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
                     // Only follow system if user hasn't set a preference
-                    if (!localStorage.getItem('theme')) {
-                        document.documentElement.classList.toggle('dark', e.matches);
+                    if (!localStorage.getItem("theme")) {
+                        document.documentElement.classList.toggle("dark", e.matches);
                     }
                 });
             })();
@@ -64,14 +65,28 @@ import "../styles/global.css";
     </head>
     <body>
         <Header />
-        <ThemeToggle />
         <section>
             <Hero />
             <About />
-            <Projects />
-            <Experience />
             <Education />
+            <Experience />
+            <Skills />
+            <Projects />
+            <Hobbies />
         </section>
         <Footer />
+
+        <!-- Vanilla Tilt initialization - only on non-touch devices -->
+        <script>
+            import VanillaTilt from "vanilla-tilt";
+
+            // Only initialize on non-touch devices
+            const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+            if (!isTouchDevice) {
+                const tiltElements = document.querySelectorAll("[data-tilt]");
+                VanillaTilt.init(Array.from(tiltElements) as HTMLElement[]);
+            }
+        </script>
     </body>
 </html>

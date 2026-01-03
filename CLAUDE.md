@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Context7 MCP
+
+Always use context7 when I need code generation, setup or configuration steps, or library/API documentation. This means you should automatically use the Context7 MCP tools to resolve library id and get library docs without me having to explicitly ask.
+
 ## Project Overview
 
 This is a modern, minimalist portfolio template built with Astro and Tailwind CSS v4. It's designed to be easily customizable through a single configuration file while maintaining a clean, professional appearance. Supports light and dark modes.
@@ -55,6 +59,7 @@ The site supports automatic and manual dark mode toggling:
 ### Dark Mode Classes Pattern
 
 All components use Tailwind's `dark:` variant for styling:
+
 - Light backgrounds (`bg-white`, `bg-gray-50`) → Dark backgrounds (`dark:bg-slate-900`, `dark:bg-slate-800`)
 - Light text (`text-gray-900`) → Dark text (`dark:text-slate-50`)
 - Project cards use inverted hover effects in dark mode (darken + white glow shadow)
@@ -64,9 +69,9 @@ All components use Tailwind's `dark:` variant for styling:
 The Hero section displays contact links as card-style buttons (email, GitHub, LinkedIn):
 
 - **Email Button**: Copies email to clipboard instead of mailto link
-  - Shows email address + mail icon by default
-  - On hover: mail icon → copy icon (accent colored)
-  - On click: text changes to "Copied!", checkmark icon appears, reverts after 2s
+    - Shows email address + mail icon by default
+    - On hover: mail icon → copy icon (accent colored)
+    - On click: text changes to "Copied!", checkmark icon appears, reverts after 2s
 - **GitHub/LinkedIn**: Card buttons that link to respective profiles, icons show accent color on hover
 
 ## Important Implementation Details

@@ -1,0 +1,48 @@
+---
+import { siteConfig } from "../config";
+import SectionLayout from "./SectionLayout.astro";
+import SectionHeader from "./SectionHeader.astro";
+
+const hasSkills = siteConfig.skillCategories && Object.keys(siteConfig.skillCategories).length > 0;
+
+const categoryLabels: Record<string, string> = {
+    languages: "Languages",
+    frameworks: "Frameworks & Libraries",
+    tools: "Tools & Platforms",
+};
+---
+
+{
+    hasSkills && (
+        <SectionLayout id="skills">
+            <SectionHeader title="Skills" />
+
+            <div class="lg:col-span-8">
+                <div
+                    data-tilt={siteConfig.tiltEffect?.enabled ? "" : undefined}
+                    data-tilt-max={siteConfig.tiltEffect?.max}
+                    data-tilt-speed={siteConfig.tiltEffect?.speed}
+                    data-tilt-perspective={siteConfig.tiltEffect?.perspective}
+                    class="bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-slate-700 p-6 sm:p-8 shadow-sm"
+                >
+                    <div class="space-y-6">
+                        {Object.entries(siteConfig.skillCategories).map(([category, skills]) => (
+                            <div>
+                                <h3 class="text-sm font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider mb-3">
+                                    {categoryLabels[category] || category}
+                                </h3>
+                                <div class="flex flex-wrap gap-2">
+                                    {skills.map((skill) => (
+                                        <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-slate-200 rounded-xl text-sm sm:text-base font-medium border border-gray-200 dark:border-slate-600 hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors duration-200">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </SectionLayout>
+    )
+}

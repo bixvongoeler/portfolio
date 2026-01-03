@@ -1,36 +1,38 @@
 ---
 import { siteConfig } from "../config";
+import GitHubIcon from "../icons/github.svg";
+import LinkedInIcon from "../icons/linkedin.svg";
+import SocialLink from "./SocialLink.astro";
+import EmailButton from "./EmailButton.astro";
 ---
 
-<div id="hero" class="relative isolate overflow-x-clip bg-white dark:bg-slate-900 pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24">
-    <!-- Light mode gradient overlay - extends beyond hero vertically -->
+<div
+    id="hero"
+    class="relative isolate overflow-x-clip bg-white dark:bg-slate-900 pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24"
+>
+    <!-- Light mode gradient overlay -->
     <div
         class="absolute -z-10 dark:hidden top-0 left-0 w-full h-[1600px] pointer-events-none"
         style={`background: radial-gradient(ellipse 100vw 1600px at 0% 0%, ${siteConfig.accentColor}50 0%, ${siteConfig.accentColor}35 15%, ${siteConfig.accentColor}20 30%, ${siteConfig.accentColor}08 50%, transparent 70%)`}
     >
     </div>
-    <!-- Dark mode gradient overlay - extends beyond hero vertically -->
+    <!-- Dark mode gradient overlay -->
     <div
         class="absolute -z-10 hidden dark:block top-0 left-0 w-full h-[1600px] pointer-events-none"
         style={`background: radial-gradient(ellipse 100vw 1600px at 0% 0%, ${siteConfig.darkAccentColor}45 0%, ${siteConfig.darkAccentColor}30 15%, ${siteConfig.darkAccentColor}15 30%, ${siteConfig.darkAccentColor}05 50%, transparent 70%)`}
     >
     </div>
+
+    <!-- Code pattern background -->
     <svg
         aria-hidden="true"
         class="absolute inset-0 -z-10 size-full stroke-gray-200 dark:stroke-slate-700 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
     >
         <defs>
-            <pattern
-                x="50%"
-                y={-1}
-                id="0787a7c5-978c-4f66-83c7-11c213f99cb7"
-                width={200}
-                height={200}
-                patternUnits="userSpaceOnUse"
-            >
+            <pattern id="grid-pattern" x="50%" y={-1} width={200} height={200} patternUnits="userSpaceOnUse">
                 <path d="M.5 200V.5H200" fill="none"></path>
             </pattern>
-            <pattern id="programming-symbols" x="0" y="0" width="400" height="400" patternUnits="userSpaceOnUse">
+            <pattern id="code-symbols" x="0" y="0" width="400" height="400" patternUnits="userSpaceOnUse">
                 <text
                     x="50"
                     y="50"
@@ -113,14 +115,13 @@ import { siteConfig } from "../config";
                 >
             </pattern>
         </defs>
-        <rect fill="url(#programming-symbols)" width="100%" height="100%" opacity="0.2"></rect>
-        <rect fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)" width="100%" height="100%" stroke-width={0}></rect>
+        <rect fill="url(#code-symbols)" width="100%" height="100%" opacity="0.2"></rect>
+        <rect fill="url(#grid-pattern)" width="100%" height="100%" stroke-width={0}></rect>
     </svg>
 
     <div class="p-8 sm:p-12 md:p-16 lg:p-24">
-        <!-- Desktop layout: horizontal using same grid as About section -->
+        <!-- Desktop layout -->
         <div class="hidden md:grid grid-cols-12 gap-8 lg:gap-16 items-start animate-fade-in">
-            <!-- Profile photo in left column (same as About Me heading), right-aligned -->
             <div class="md:col-span-4 flex justify-end">
                 <img
                     src={siteConfig.profilePhoto}
@@ -128,152 +129,28 @@ import { siteConfig } from "../config";
                     class="w-36 lg:w-44 xl:w-52 h-36 lg:h-44 xl:h-52 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg"
                 />
             </div>
-            <!-- Content in right column (same as About Me content) -->
             <div class="md:col-span-8">
                 <h1 class="font-bold tracking-tight text-gray-800 dark:text-slate-300">
                     <span class="text-4xl lg:text-4xl font-medium">Hi, I'm </span>
                     <span class="text-5xl ml-1 lg:text-5xl text-[var(--accent-color)]">{siteConfig.name}</span>
                 </h1>
-                <p class="mt-2 text-2xl lg:text-3xl">
-                    <span class="text-gray-700 dark:text-slate-300">{siteConfig.fullName}</span>
+                <p class="mt-2 text-2xl lg:text-2xl">
+                    <span class="text-gray-700 dark:text-slate-400">{siteConfig.fullName}</span>
                     <span class="text-gray-500 dark:text-slate-500"> - {siteConfig.pronouns}</span>
                 </p>
                 <p class="mt-1 text-base lg:text-lg text-gray-600 dark:text-slate-400">
                     {siteConfig.title}
                 </p>
-                <!-- Contact buttons -->
                 <div class="flex flex-wrap gap-3 mt-6">
-                    {
-                        siteConfig.social?.github && (
-                            <a
-                                href={siteConfig.social.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-0.5"
-                            >
-                                <span class="text-sm font-medium">GitHub</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="w-4 h-4 transition-colors group-hover:text-[var(--accent-color)]"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-                                </svg>
-                            </a>
-                        )
-                    }
-                    {
-                        siteConfig.social?.linkedin && (
-                            <a
-                                href={siteConfig.social.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-0.5"
-                            >
-                                <span class="text-sm font-medium">LinkedIn</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="w-4 h-4 transition-colors group-hover:text-[var(--accent-color)]"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M8 11v5" />
-                                    <path d="M8 8v.01" />
-                                    <path d="M12 16v-5" />
-                                    <path d="M16 16v-3a2 2 0 1 0 -4 0" />
-                                    <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />
-                                </svg>
-                            </a>
-                        )
-                    }
-                    {
-                        siteConfig.social?.email && (
-                            <button
-                                id="email-copy-btn"
-                                data-email={siteConfig.social.email}
-                                type="button"
-                                class="group flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-0.5"
-                            >
-                                <span id="email-text" class="text-sm font-medium">
-                                    {siteConfig.social.email}
-                                </span>
-                                <span id="email-icons" class="w-4 h-4 flex items-center justify-center relative">
-                                    <svg
-                                        id="email-icon-mail"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="absolute inset-0 w-full h-full group-hover:opacity-0 transition-all"
-                                    >
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-                                        <path d="M3 7l9 6l9 -6" />
-                                    </svg>
-                                    <svg
-                                        id="email-icon-copy"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 group-hover:text-[var(--accent-color)] transition-all"
-                                    >
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-                                        <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-                                    </svg>
-                                    <svg
-                                        id="email-icon-check"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="absolute inset-0 w-full h-full opacity-0 text-green-500 transition-opacity"
-                                    >
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M5 12l5 5l10 -10" />
-                                    </svg>
-                                </span>
-                            </button>
-                        )
-                    }
+                    <SocialLink href={siteConfig.social.github} label="GitHub" icon={GitHubIcon} />
+                    <SocialLink href={siteConfig.social.linkedin} label="LinkedIn" icon={LinkedInIcon} />
+                    <EmailButton email={siteConfig.social.email} />
                 </div>
             </div>
         </div>
 
-        <!-- Mobile layout: stacked -->
+        <!-- Mobile layout -->
         <div class="md:hidden animate-fade-in">
-            <!-- Profile photo + Title row -->
             <div class="flex items-center gap-4">
                 <img
                     src={siteConfig.profilePhoto}
@@ -285,197 +162,21 @@ import { siteConfig } from "../config";
                     <span class="text-2xl sm:text-3xl text-[var(--accent-color)]">{siteConfig.name}!</span>
                 </h1>
             </div>
-            <!-- Full name and pronouns -->
             <p class="mt-4 text-lg sm:text-xl">
                 <span class="text-gray-700 dark:text-slate-300">{siteConfig.fullName}</span>
                 <span class="text-gray-500 dark:text-slate-500"> - {siteConfig.pronouns}</span>
             </p>
-            <!-- Title -->
             <p class="mt-1 text-sm sm:text-base text-gray-600 dark:text-slate-400">
                 {siteConfig.title}
             </p>
-            <!-- Contact buttons -->
-            <div class="flex flex-col gap-3 mt-6 max-w-xs">
-                <!-- GitHub + LinkedIn row -->
-                <div class="flex gap-3">
-                    {
-                        siteConfig.social?.github && (
-                            <a
-                                href={siteConfig.social.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500"
-                            >
-                                <span class="text-xs font-medium">GitHub</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="w-3.5 h-3.5 transition-colors group-hover:text-[var(--accent-color)]"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-                                </svg>
-                            </a>
-                        )
-                    }
-                    {
-                        siteConfig.social?.linkedin && (
-                            <a
-                                href={siteConfig.social.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="group flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500"
-                            >
-                                <span class="text-xs font-medium">LinkedIn</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="w-3.5 h-3.5 transition-colors group-hover:text-[var(--accent-color)]"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M8 11v5" />
-                                    <path d="M8 8v.01" />
-                                    <path d="M12 16v-5" />
-                                    <path d="M16 16v-3a2 2 0 1 0 -4 0" />
-                                    <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />
-                                </svg>
-                            </a>
-                        )
-                    }
-                </div>
-                <!-- Email row -->
-                {
-                    siteConfig.social?.email && (
-                        <button
-                            id="email-copy-btn-mobile"
-                            data-email={siteConfig.social.email}
-                            type="button"
-                            class="group flex items-center justify-center gap-2 px-3 py-2 w-full bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500"
-                        >
-                            <span id="email-text-mobile" class="text-xs font-medium">
-                                {siteConfig.social.email}
-                            </span>
-                            <span class="w-3.5 h-3.5 flex items-center justify-center relative">
-                                <svg
-                                    id="email-icon-mail-mobile"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="absolute inset-0 w-full h-full group-hover:opacity-0 transition-all"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-                                    <path d="M3 7l9 6l9 -6" />
-                                </svg>
-                                <svg
-                                    id="email-icon-copy-mobile"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 group-hover:text-[var(--accent-color)] transition-all"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-                                    <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-                                </svg>
-                                <svg
-                                    id="email-icon-check-mobile"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="absolute inset-0 w-full h-full opacity-0 text-green-500 transition-opacity"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M5 12l5 5l10 -10" />
-                                </svg>
-                            </span>
-                        </button>
-                    )
-                }
+            <div class="flex flex-wrap gap-3 mt-6">
+                <SocialLink href={siteConfig.social.github} label="GitHub" icon={GitHubIcon} size="sm" />
+                <SocialLink href={siteConfig.social.linkedin} label="LinkedIn" icon={LinkedInIcon} size="sm" />
+                <EmailButton email={siteConfig.social.email} size="sm" />
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    // Helper to setup email copy functionality for a button
-    function setupEmailCopy(btnId: string, textId: string, mailId: string, copyId: string, checkId: string) {
-        const btn = document.getElementById(btnId);
-        const text = document.getElementById(textId);
-        const iconMail = document.getElementById(mailId);
-        const iconCopy = document.getElementById(copyId);
-        const iconCheck = document.getElementById(checkId);
-
-        if (btn && text && iconMail && iconCopy && iconCheck) {
-            const originalEmail = btn.dataset.email || "";
-
-            btn.addEventListener("click", async () => {
-                try {
-                    await navigator.clipboard.writeText(originalEmail);
-                    text.textContent = "Copied!";
-                    iconMail.style.opacity = "0";
-                    iconCopy.style.opacity = "0";
-                    iconMail.classList.remove("group-hover:opacity-0");
-                    iconCopy.classList.remove("group-hover:opacity-100");
-                    iconCheck.style.opacity = "1";
-
-                    setTimeout(() => {
-                        text.textContent = originalEmail;
-                        iconMail.style.opacity = "";
-                        iconCopy.style.opacity = "";
-                        iconMail.classList.add("group-hover:opacity-0");
-                        iconCopy.classList.add("group-hover:opacity-100");
-                        iconCheck.style.opacity = "0";
-                    }, 2000);
-                } catch (err) {
-                    console.error("Failed to copy email:", err);
-                }
-            });
-        }
-    }
-
-    // Setup both desktop and mobile email buttons
-    setupEmailCopy("email-copy-btn", "email-text", "email-icon-mail", "email-icon-copy", "email-icon-check");
-    setupEmailCopy(
-        "email-copy-btn-mobile",
-        "email-text-mobile",
-        "email-icon-mail-mobile",
-        "email-icon-copy-mobile",
-        "email-icon-check-mobile",
-    );
-</script>
 
 <style>
     @keyframes fadeIn {

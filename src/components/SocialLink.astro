@@ -1,0 +1,45 @@
+---
+interface Props {
+    href: string;
+    label: string;
+    icon: astroHTML.JSX.Element | any;
+    size?: "sm" | "md";
+    external?: boolean;
+}
+
+const { href, label, icon: Icon, size = "md", external = true } = Astro.props;
+
+const sizeClasses = {
+    sm: {
+        button: "px-3 py-2",
+        text: "text-xs",
+        icon: "w-3.5 h-3.5",
+    },
+    md: {
+        button: "px-4 py-2",
+        text: "text-sm",
+        icon: "w-4 h-4",
+    },
+};
+
+const classes = sizeClasses[size];
+---
+
+<a
+    href={href}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noopener noreferrer" : undefined}
+    class:list={[
+        "group flex items-center gap-2 bg-gray-50 dark:bg-slate-800 rounded-xl",
+        "border border-gray-200 dark:border-slate-700",
+        "text-gray-700 dark:text-slate-300",
+        "transition-all duration-300",
+        "hover:bg-white dark:hover:bg-slate-900",
+        "hover:shadow-lg hover:border-gray-300 dark:hover:border-slate-500",
+        "hover:-translate-y-0.5",
+        classes.button,
+    ]}
+>
+    <span class:list={["font-medium", classes.text]}>{label}</span>
+    <Icon class:list={[classes.icon, "transition-colors group-hover:text-[var(--accent-color)]"]} />
+</a>
