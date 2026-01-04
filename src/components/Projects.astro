@@ -1,8 +1,6 @@
 ---
 import { siteConfig } from "../config";
 import SectionLayout from "./SectionLayout.astro";
-import SectionHeader from "./SectionHeader.astro";
-import GitHubRepoLink from "./GitHubRepoLink.astro";
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 ---
@@ -10,9 +8,16 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 {
     hasProjects && (
         <SectionLayout id="projects">
-            <SectionHeader title="Projects" />
+            <!-- Full width header -->
+            <div class="lg:col-span-12 mb-8">
+                <h2 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-50">
+                    Projects
+                </h2>
+                <div class="w-[75px] h-[5px] mt-2 rounded-full bg-[var(--accent-color)]"></div>
+            </div>
 
-            <div class="lg:col-span-8">
+            <!-- Full width project cards -->
+            <div class="lg:col-span-12">
                 <div class="space-y-8">
                     {siteConfig.projects.map((project, index) => {
                         const Component = project.link ? "a" : "div";
@@ -32,41 +37,115 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                                     data-tilt-max={siteConfig.tiltEffect?.max}
                                     data-tilt-speed={siteConfig.tiltEffect?.speed}
                                     data-tilt-perspective={siteConfig.tiltEffect?.perspective}
-                                    class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 dark:bg-slate-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-slate-700 transition-all duration-300 ${
-                                        project.link
-                                            ? "hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.15)] hover:border-gray-300 dark:hover:border-slate-500 hover:-translate-y-1"
-                                            : ""
+                                    class={`block transition-all duration-300 ${
+                                        project.link ? "hover:-translate-y-1" : ""
                                     }`}
                                 >
-                                    {project.repo && <GitHubRepoLink repo={project.repo} />}
-
-                                    <div class="space-y-4">
-                                        <div>
-                                            <span class="text-sm font-mono text-[var(--accent-color)]">
-                                                0{index + 1}
-                                            </span>
-                                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-slate-50 mt-1">
-                                                {project.name}
-                                            </h3>
+                                    {/* Card container - flex column on mobile, row on desktop */}
+                                    <div class="flex flex-col md:flex-row">
+                                        {/* Mobile: Image card on top */}
+                                        <div class="md:hidden mb-0">
+                                            <div class="relative h-40 sm:h-48 rounded-t-xl border border-b-0 border-gray-300 dark:border-slate-500 overflow-hidden transition-all duration-300">
+                                                {/* Full-bleed image */}
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.name}
+                                                    class="absolute inset-0 w-full h-full object-cover"
+                                                />
+                                                {/* Inner shadow overlay for depressed effect */}
+                                                <div class="absolute inset-0 shadow-[inset_0_4px_15px_rgba(0,0,0,0.25),inset_0_-4px_15px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_4px_20px_rgba(0,0,0,0.5),inset_0_-4px_15px_rgba(0,0,0,0.4)] pointer-events-none"></div>
+                                                {/* Repo link overlaid at top right */}
+                                                {project.repo && (
+                                                    <div class="absolute top-3 right-3 z-10">
+                                                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 text-xs font-medium shadow-md transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] group-hover:text-white">
+                                                            <span>{project.repo}</span>
+                                                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
 
-                                        <p class="text-base sm:text-lg text-gray-600 dark:text-slate-400 leading-relaxed" set:html={project.description} />
-
-                                        {project.skills && project.skills.length > 0 && (
-                                            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
-                                                {project.skills.map((skill) => (
-                                                    <span
-                                                        class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-slate-600 text-white rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium border border-gray-700 dark:border-slate-500 transition-all duration-300 ${
-                                                            project.link
-                                                                ? "group-hover:bg-gray-800 dark:group-hover:bg-slate-500"
-                                                                : ""
-                                                        }`}
-                                                    >
-                                                        {skill}
+                                        {/* Description card - main content */}
+                                        <div class={`relative z-10 flex-1 p-4 sm:p-6 md:p-8 bg-gray-50 dark:bg-slate-800 rounded-b-xl md:rounded-xl border border-gray-200 dark:border-slate-700 shadow-[6px_0_25px_-5px_rgba(0,0,0,0.25)] dark:shadow-[6px_0_25px_-5px_rgba(0,0,0,0.6)] transition-all duration-300 ${
+                                            project.link
+                                                ? "group-hover:bg-white dark:group-hover:bg-slate-900 group-hover:shadow-[8px_0_30px_-5px_rgba(0,0,0,0.3),0_20px_50px_-12px_rgba(0,0,0,0.2)] dark:group-hover:shadow-[8px_0_30px_-5px_rgba(0,0,0,0.7),0_20px_50px_-12px_rgba(255,255,255,0.15)] group-hover:border-gray-300 dark:group-hover:border-slate-500"
+                                                : ""
+                                        }`}>
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <span class="text-sm font-mono text-[var(--accent-color)]">
+                                                        0{index + 1}
                                                     </span>
-                                                ))}
+                                                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-slate-50 mt-1">
+                                                        {project.name}
+                                                    </h3>
+                                                </div>
+
+                                                <p class="text-base sm:text-lg text-gray-600 dark:text-slate-400 leading-relaxed" set:html={project.description} />
+
+                                                {project.skills && project.skills.length > 0 && (
+                                                    <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
+                                                        {project.skills.map((skill) => (
+                                                            <span
+                                                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-slate-600 text-white rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium border border-gray-700 dark:border-slate-500 transition-all duration-300 ${
+                                                                    project.link
+                                                                        ? "group-hover:bg-gray-800 dark:group-hover:bg-slate-500"
+                                                                        : ""
+                                                                }`}
+                                                            >
+                                                                {skill}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </div>
-                                        )}
+                                        </div>
+
+                                        {/* Desktop: Image subcard on right - slides under description card */}
+                                        <div class="hidden md:block -ml-4 relative z-0 w-72 lg:w-80 xl:w-96 flex-shrink-0">
+                                            <div class={`h-full relative rounded-r-xl border border-l-0 border-gray-300 dark:border-slate-500 overflow-hidden transition-all duration-300 ${
+                                                project.link ? "group-hover:border-gray-400 dark:group-hover:border-slate-400" : ""
+                                            }`}>
+                                                {/* Full-bleed image */}
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.name}
+                                                    class="absolute inset-0 w-full h-full object-cover"
+                                                />
+                                                {/* Inner shadow overlay for depressed effect */}
+                                                <div class="absolute inset-0 shadow-[inset_0_4px_15px_rgba(0,0,0,0.25),inset_0_-4px_15px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_4px_20px_rgba(0,0,0,0.5),inset_0_-4px_15px_rgba(0,0,0,0.4)] pointer-events-none"></div>
+                                                {/* Repo link overlaid at top right */}
+                                                {project.repo && (
+                                                    <div class="absolute top-3 right-3 z-10">
+                                                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 text-xs sm:text-sm font-medium shadow-md transition-all duration-300 group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] group-hover:text-white group-hover:shadow-lg">
+                                                            <span class="group-hover:hidden">{project.repo}</span>
+                                                            <span class="hidden group-hover:inline">view repo</span>
+                                                            <span class="relative w-3.5 h-3.5 sm:w-4 sm:h-4">
+                                                                <svg class="absolute inset-0 w-full h-full group-hover:opacity-0 transition-opacity duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                                                </svg>
+                                                                <svg
+                                                                    class="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    viewBox="0 0 24 24"
+                                                                >
+                                                                    <path
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M7 17L17 7M17 7H7M17 7V17"
+                                                                    />
+                                                                </svg>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 </Component>
                             </div>
