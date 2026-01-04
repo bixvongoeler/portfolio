@@ -9,7 +9,20 @@ import Education from "../components/Education.astro";
 import Hobbies from "../components/Hobbies.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
+import { getVisibleSections } from "../utils/sections";
 import "../styles/global.css";
+
+// Map section IDs to their components
+const sectionComponents: Record<string, any> = {
+    about: About,
+    education: Education,
+    experience: Experience,
+    skills: Skills,
+    projects: Projects,
+    hobbies: Hobbies,
+};
+
+const orderedSections = getVisibleSections();
 ---
 
 <html lang="en">
@@ -67,12 +80,10 @@ import "../styles/global.css";
         <Header />
         <section>
             <Hero />
-            <About />
-            <Education />
-            <Experience />
-            <Skills />
-            <Projects />
-            <Hobbies />
+            {orderedSections.map((section) => {
+                const Component = sectionComponents[section.id];
+                return Component ? <Component /> : null;
+            })}
         </section>
         <Footer />
 

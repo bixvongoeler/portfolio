@@ -1,15 +1,12 @@
 ---
 import { siteConfig } from "../config";
+import { getVisibleSections } from "../utils/sections";
 import MenuIcon from "../icons/menu.svg";
 import CloseIcon from "../icons/close.svg";
 import SunIcon from "../icons/sun.svg";
 import MoonIcon from "../icons/moon.svg";
 
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
-const hasSkills = siteConfig.skillCategories && Object.keys(siteConfig.skillCategories).length > 0;
-const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
-const hasEducation = siteConfig.education && siteConfig.education.length > 0;
-const hasHobbies = siteConfig.hobbies && siteConfig.hobbies.length > 0;
+const sections = getVisibleSections();
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 p-2 sm:p-[clamp(0.5rem,2vw,1rem)]">
@@ -46,80 +43,17 @@ const hasHobbies = siteConfig.hobbies && siteConfig.hobbies.length > 0;
         <!-- Mobile menu (expandable) -->
         <div id="mobile-menu" class="hidden sm:hidden">
             <ul class="flex flex-col gap-2 pt-4 pb-2 border-t border-gray-200/50 dark:border-slate-700/50 mt-2">
-                <li>
-                    <a
-                        href="#about"
-                        data-nav-link="about"
-                        class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
-                    >
-                        About
-                    </a>
-                </li>
-                {
-                    hasEducation && (
-                        <li>
-                            <a
-                                href="#education"
-                                data-nav-link="education"
-                                class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
-                            >
-                                Education
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasExperience && (
-                        <li>
-                            <a
-                                href="#experience"
-                                data-nav-link="experience"
-                                class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
-                            >
-                                Experience
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasSkills && (
-                        <li>
-                            <a
-                                href="#skills"
-                                data-nav-link="skills"
-                                class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
-                            >
-                                Skills
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasProjects && (
-                        <li>
-                            <a
-                                href="#projects"
-                                data-nav-link="projects"
-                                class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
-                            >
-                                Projects
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasHobbies && (
-                        <li>
-                            <a
-                                href="#hobbies"
-                                data-nav-link="hobbies"
-                                class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
-                            >
-                                Hobbies
-                            </a>
-                        </li>
-                    )
-                }
+                {sections.map((section) => (
+                    <li>
+                        <a
+                            href={`#${section.id}`}
+                            data-nav-link={section.id}
+                            class="nav-link block py-2 px-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors font-medium"
+                        >
+                            {section.label}
+                        </a>
+                    </li>
+                ))}
             </ul>
         </div>
 
@@ -130,80 +64,17 @@ const hasHobbies = siteConfig.hobbies && siteConfig.hobbies.length > 0;
             <ul
                 class="flex items-center gap-[clamp(1rem,3vw,2.5rem)] text-[clamp(0.8rem,1.5vw,1rem)] justify-center flex-1"
             >
-                <li>
-                    <a
-                        href="#about"
-                        data-nav-link="about"
-                        class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
-                    >
-                        About
-                    </a>
-                </li>
-                {
-                    hasEducation && (
-                        <li>
-                            <a
-                                href="#education"
-                                data-nav-link="education"
-                                class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
-                            >
-                                Education
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasExperience && (
-                        <li>
-                            <a
-                                href="#experience"
-                                data-nav-link="experience"
-                                class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
-                            >
-                                Experience
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasSkills && (
-                        <li>
-                            <a
-                                href="#skills"
-                                data-nav-link="skills"
-                                class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
-                            >
-                                Skills
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasProjects && (
-                        <li>
-                            <a
-                                href="#projects"
-                                data-nav-link="projects"
-                                class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
-                            >
-                                Projects
-                            </a>
-                        </li>
-                    )
-                }
-                {
-                    hasHobbies && (
-                        <li>
-                            <a
-                                href="#hobbies"
-                                data-nav-link="hobbies"
-                                class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
-                            >
-                                Hobbies
-                            </a>
-                        </li>
-                    )
-                }
+                {sections.map((section) => (
+                    <li>
+                        <a
+                            href={`#${section.id}`}
+                            data-nav-link={section.id}
+                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 font-medium px-2 py-1 rounded-md"
+                        >
+                            {section.label}
+                        </a>
+                    </li>
+                ))}
             </ul>
 
             <button

@@ -50,9 +50,7 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                                             </h3>
                                         </div>
 
-                                        <p class="text-base sm:text-lg text-gray-600 dark:text-slate-400 leading-relaxed">
-                                            {project.description}
-                                        </p>
+                                        <p class="text-base sm:text-lg text-gray-600 dark:text-slate-400 leading-relaxed" set:html={project.description} />
 
                                         {project.skills && project.skills.length > 0 && (
                                             <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">

@@ -1,14 +1,11 @@
 ---
 import { siteConfig } from "../config";
+import { getVisibleSections } from "../utils/sections";
 import MailIcon from "../icons/mail.svg";
 import LinkedInIcon from "../icons/linkedin.svg";
 import GitHubIcon from "../icons/github.svg";
 
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
-const hasSkills = siteConfig.skillCategories && Object.keys(siteConfig.skillCategories).length > 0;
-const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
-const hasEducation = siteConfig.education && siteConfig.education.length > 0;
-const hasHobbies = siteConfig.hobbies && siteConfig.hobbies.length > 0;
+const sections = getVisibleSections();
 ---
 
 <footer class="relative bg-gray-50 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
@@ -52,62 +49,14 @@ const hasHobbies = siteConfig.hobbies && siteConfig.hobbies.length > 0;
 
             <div class="hidden md:block flex flex-col md:items-end gap-4">
                 <nav class="flex gap-x-8">
-                    <a
-                        href="#about"
-                        class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
-                    >
-                        About
-                    </a>
-                    {
-                        hasEducation && (
-                            <a
-                                href="#education"
-                                class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
-                            >
-                                Education
-                            </a>
-                        )
-                    }
-                    {
-                        hasExperience && (
-                            <a
-                                href="#experience"
-                                class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
-                            >
-                                Experience
-                            </a>
-                        )
-                    }
-                    {
-                        hasSkills && (
-                            <a
-                                href="#skills"
-                                class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
-                            >
-                                Skills
-                            </a>
-                        )
-                    }
-                    {
-                        hasProjects && (
-                            <a
-                                href="#projects"
-                                class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
-                            >
-                                Projects
-                            </a>
-                        )
-                    }
-                    {
-                        hasHobbies && (
-                            <a
-                                href="#hobbies"
-                                class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
-                            >
-                                Hobbies
-                            </a>
-                        )
-                    }
+                    {sections.map((section) => (
+                        <a
+                            href={`#${section.id}`}
+                            class="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 transition-colors"
+                        >
+                            {section.label}
+                        </a>
+                    ))}
                 </nav>
                 <p class="text-sm text-gray-500 dark:text-slate-500">
                     &copy; {new Date().getFullYear()}
