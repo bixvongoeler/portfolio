@@ -2,7 +2,7 @@ export const siteConfig = {
     name: "Bix",
     fullName: "William Bix von Goeler",
     pronouns: "he/him",
-    profilePhoto: "/profile.jpeg",
+    profilePhoto: "/portfolio/profile.jpeg",
     greeting: "Hey there, 👋",
     title: "Software Engineer & Comp-Sci Undergrad at Tufts",
     description: "portfolio website of William Bix von Goeler",
@@ -53,7 +53,7 @@ export const siteConfig = {
             name: "AI Advisor Injecting MITM-Proxy",
             description:
                 "An HTTPS man-in-the-middle proxy written in C that intercepts encrypted web traffic and injects an LLM-powered academic advisor widget into the Tufts student portal (<i>used for course registration, transcripts, etc.</i>). Combines RAG-augmented GPT queries with parsed student transcripts and scraped course catalog data. Containerized with Docker for portable deployment.",
-            image: "/projects/mitm-proxy.png",
+            image: "/portfolio/projects/mitm-proxy.png",
             link: "https://github.com/bixvongoeler/llm_mitm_proxy",
             repo: "llm_mitm_proxy",
             skills: ["C Socket Programming", "Docker", "TLS/SSL", "Proxies", "LLMs", "Python"],
@@ -62,7 +62,7 @@ export const siteConfig = {
             name: "FPGA Based Guitar Hero Game",
             description:
                 "A Guitar Hero inspired rhythm game implemented entirely in SystemVerilog on an iCE40 FPGA. Features VGA graphics output, buffered I2S audio playback from a MicroSD, realtime strum-gated note registration. Uses custom python tools for MIDI to note data conversion and direct writes of processed audio data to MicroSD card sectors.",
-            image: "/projects/guitar-hero.png",
+            image: "/portfolio/projects/guitar-hero.png",
             link: "https://github.com/bixvongoeler/es04_guitar_hero",
             repo: "es04_guitar_hero",
             skills: ["SystemVerilog", "FPGA", "I2C", "I2S Audio", "VGA"],
@@ -71,7 +71,7 @@ export const siteConfig = {
             name: "2D Sand Simulation",
             description:
                 "A performant grid-based particle simulation modeling the behavior of sand, water, stone, and gas elements with physics interactions. Uses the RayLib C Graphics Library. Built using a modular OOP architecture with base classes for particle types and a centralized world grid managing the simulation loop.",
-            image: "/projects/sand-sim.png",
+            image: "/portfolio/projects/sand-sim.png",
             link: "https://github.com/bixvongoeler/sand_sim",
             repo: "sand_sim",
             skills: ["C++", "RayLib", "OOP", "CMake"],
@@ -80,7 +80,7 @@ export const siteConfig = {
             name: "Graphical AI Robot-Vacuum Sim",
             description:
                 "A robot vacuum simulator controlled by a hierarchical behavior tree AI. Features dynamic dust accumulation, battery management with priority-based charging, spot and general cleaning modes, and a real-time GUI visualization of the discrete grid environment.",
-            image: "/projects/roomba-sim.png",
+            image: "/portfolio/projects/roomba-sim.png",
             link: "https://github.com/bixvongoeler/roomba_sim",
             repo: "roomba_sim",
             skills: ["Python", "Behavior Trees", "AI", "Pygame"],
