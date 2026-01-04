@@ -35,6 +35,12 @@ const orderedSections = getVisibleSections();
         <!-- Theme initialization - MUST be inline and blocking to prevent FOWT -->
         <script is:inline>
             (function () {
+                // Disable browser scroll restoration and scroll to top
+                if ("scrollRestoration" in history) {
+                    history.scrollRestoration = "manual";
+                }
+                window.scrollTo(0, 0);
+
                 const stored = localStorage.getItem("theme");
                 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
                 // Only use stored if user explicitly set it, otherwise follow system

@@ -1,12 +1,10 @@
-<img width="1943" height="1093" alt="image" src="https://github.com/user-attachments/assets/cc2ff955-17c2-48c7-81c8-479a0f061850" />
-
 # Bix's Portfolio
 
 This is my personal adaptation of the [DevPortfolio template](https://github.com/RyanFitzgerald/devportfolio) by Ryan Fitzgerald. I've added dark mode support and made various styling and functionality tweaks.
 
 ---
 
-*The documentation below is adapted from the original project README.*
+_The documentation below is adapted from the original project README._
 
 ---
 
