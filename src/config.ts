@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "Bix",
     fullName: "William Bix von Goeler",
-    pronouns: "he/him",
+    pronouns: "",
     profilePhoto: "/portfolio/profile.jpeg",
     greeting: "Hey there, 👋",
     title: "Software Engineer & Comp-Sci Undergrad at Tufts",
