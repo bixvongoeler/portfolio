@@ -77,6 +77,14 @@ export const siteConfig = {
             skills: ["C++", "RayLib", "OOP", "CMake"],
         },
         {
+            name: "Chordian: An Electric MIDI Accordion",
+            description: "A wireless MIDI accordion built around dual ESP32 microcontrollers communicating via ESP-NOW. An Arduino Mega handles analog reads from 8 keys with soft potentiometers and FSRs, while the ESP32 processes and transmits TOF-based bellows data to a Max/MSP patch for MIDI conversion. Self-contained with battery power and laser-cut acrylic construction.",
+            image: "/portfolio/projects/chordian.png",
+            link: "https://github.com/bixvongoeler/chordian",
+            repo: "chordian",
+            skills: ["Arduino", "ESP32", "I2C", "Embedded", "MIDI", "Wireless"],
+        },
+        {
             name: "Graphical AI Robot-Vacuum Sim",
             description:
                 "A robot vacuum simulator controlled by a hierarchical behavior tree AI. Features dynamic dust accumulation, battery management with priority-based charging, spot and general cleaning modes, and a real-time GUI visualization of the discrete grid environment.",
