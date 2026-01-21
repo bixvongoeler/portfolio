@@ -59,13 +59,12 @@ export const siteConfig = {
             skills: ["C Socket Programming", "Docker", "TLS/SSL", "Proxies", "LLMs", "Python"],
         },
         {
-            name: "FPGA Based Guitar Hero Game",
-            description:
-                "A Guitar Hero inspired rhythm game implemented entirely in SystemVerilog on an iCE40 FPGA. Features VGA graphics output, buffered I2S audio playback from a MicroSD, realtime strum-gated note registration. Uses custom python tools for MIDI to note data conversion and direct writes of processed audio data to MicroSD card sectors.",
-            image: "/portfolio/projects/guitar-hero.png",
-            link: "https://github.com/bixvongoeler/es04_guitar_hero",
-            repo: "es04_guitar_hero",
-            skills: ["SystemVerilog", "FPGA", "I2C", "I2S Audio", "VGA"],
+            name: "Chordian: An Electric MIDI Accordion",
+            description: "A wireless MIDI accordion built around dual ESP32 microcontrollers communicating via ESP-NOW. An Arduino Mega handles analog reads from 8 keys with soft potentiometers and FSRs, while the ESP32 processes and transmits TOF-based bellows data to a Max/MSP patch for MIDI conversion. Self-contained with battery power and laser-cut acrylic construction.",
+            image: "/portfolio/projects/chordian.png",
+            link: "https://github.com/bixvongoeler/chordian",
+            repo: "chordian",
+            skills: ["Arduino", "ESP32", "I2C", "Embedded", "MIDI", "Wireless"],
         },
         {
             name: "2D Sand Simulation",
@@ -77,12 +76,13 @@ export const siteConfig = {
             skills: ["C++", "RayLib", "OOP", "CMake"],
         },
         {
-            name: "Chordian: An Electric MIDI Accordion",
-            description: "A wireless MIDI accordion built around dual ESP32 microcontrollers communicating via ESP-NOW. An Arduino Mega handles analog reads from 8 keys with soft potentiometers and FSRs, while the ESP32 processes and transmits TOF-based bellows data to a Max/MSP patch for MIDI conversion. Self-contained with battery power and laser-cut acrylic construction.",
-            image: "/portfolio/projects/chordian.png",
-            link: "https://github.com/bixvongoeler/chordian",
-            repo: "chordian",
-            skills: ["Arduino", "ESP32", "I2C", "Embedded", "MIDI", "Wireless"],
+            name: "FPGA Based Guitar Hero Game",
+            description:
+                "A Guitar Hero inspired rhythm game implemented entirely in SystemVerilog on an iCE40 FPGA. Features VGA graphics output, buffered I2S audio playback from a MicroSD, realtime strum-gated note registration. Uses custom python tools for MIDI to note data conversion and direct writes of processed audio data to MicroSD card sectors.",
+            image: "/portfolio/projects/guitar-hero.png",
+            link: "https://github.com/bixvongoeler/es04_guitar_hero",
+            repo: "es04_guitar_hero",
+            skills: ["SystemVerilog", "FPGA", "I2C", "I2S Audio", "VGA"],
         },
         {
             name: "Graphical AI Robot-Vacuum Sim",
