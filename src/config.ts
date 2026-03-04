@@ -50,9 +50,9 @@ export const siteConfig = {
     },
     projects: [
         {
-            name: "AI Advisor Injecting MITM-Proxy",
+            name: "AI Advisor Widget Injected by C MITM-Proxy Server",
             description:
-                "An HTTPS man-in-the-middle proxy written in C that intercepts encrypted web traffic and injects an LLM-powered academic advisor widget into the Tufts student portal (<i>used for course registration, transcripts, etc.</i>). Combines RAG-augmented GPT queries with parsed student transcripts and scraped course catalog data. Containerized with Docker for portable deployment.",
+                "Injects an LLM-powered academic advisor widget into the Tufts student portal (<i>for registration, transcripts, etc.</i>). Encrypted HTTPS traffic is intercepted by a custom C proxy server with a non-blocking, event-based architecture using `libev` to support simultaneous connections. The proxy acts as a CA, spoofing TLS certificates to directly modify webpage contents. Relevant page data is sent over Unix sockets to a separate Python server that parses course information, injects JavaScript for the widget, and handles backend requests. A GPT-4.1-mini agent responds to students' questions using RAG queries to fetch relevant information from a large database of structured Tufts course summaries (scraped from official webpages and past syllabi). User-uploaded PDF transcripts are parsed into structured JSON fields like GPA, major, and courses taken per year, processed once by a separate LLM at the start of the conversation, and appended to the system prompt in future messages. Information currently displayed on the webpage (e.g. available class times), parsed from the intercepted HTML into Markdown using BeautifulSoup, is also appended to user messages for contextually relevant responses. The entire project is containerized with Docker for portable deployment and easy setup: run the container, provide an LLM API key, and add the proxy CA as trusted.",
             image: "/portfolio/projects/mitm-proxy.png",
             link: "https://github.com/bixvongoeler/llm_mitm_proxy",
             repo: "llm_mitm_proxy",
