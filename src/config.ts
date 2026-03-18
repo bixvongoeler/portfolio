@@ -22,7 +22,7 @@ export const siteConfig = {
         github: "https://github.com/bixvongoeler",
     },
     aboutMe:
-        "I'm a Junior studying CS at Tufts University, and am currently interning at Financial Recovery Technologies in Medford, where I'm working on data extraction pipelines and internal tooling.\n I love projects or problem spaces that really allow me to go deep — getting the chance to build a real understanding of the <i>how</i> and <i>why</i> behind the way things work. My interests lean towards systems programming, networking, and recently embedded — though I'm always happy to learn more about any area I encounter.\n I bring a creative perspective to  technical work through my background in audio engineering, including my current part time position running live sound for music events at Tufts. Outside of tech, you'll find me playing guitar, woodworking, producing music, hiking, or snowboarding!",
+        "I'm a Junior studying CS at Tufts University, and just wrapped up an internship at Financial Recovery Technologies in Medford, where I got the chance to work on data extraction pipelines and internal tooling.\n I love projects or problem spaces that really allow me to go deep — getting the chance to build a real understanding of the <i>how</i> and <i>why</i> behind the way things work. My interests lean towards systems programming, networking, and recently embedded — though I'm always happy to learn more about any area I encounter.\n I bring a creative perspective to  technical work through my background in audio engineering, including my current part time position running live sound for music events at Tufts. Outside of tech, you'll find me playing guitar, woodworking, producing music, hiking, or snowboarding!",
     skillCategories: {
         languages: ["C", "C++", "Python", "SQL", "JavaScript", "Bash/Shell", "SystemVerilog"],
         toolsAndLibraries: [
@@ -98,8 +98,8 @@ export const siteConfig = {
         {
             company: "Financial Recovery Technologies",
             title: "Software Engineering Intern",
-            dateRange: "June 2025 - Present",
-            current: true,
+            dateRange: "June 2025 - March 2026",
+            current: false,
             bullets: [
                 "Automating PDF table extraction with ML libraries to build pipelines for client data intake.",
                 "Using Python + SQLite to automate file deduplication, folder name standardization, and legacy file transfers by searching, analyzing, and collecting metrics on terabytes of data over millions of files stored on a secure data drive.",
@@ -109,8 +109,8 @@ export const siteConfig = {
         {
             company: "Tufts University Music Department",
             title: "Music Event Technical Staff",
-            dateRange: "February 2023 - Present",
-            current: true,
+            dateRange: "February 2023 - March 2026",
+            current: false,
             bullets: [
                 "Multitrack audio/video mixing, recording and post-production for live events in venues seating up to 300 people held at Tufts University covering a variety of genres like folk, classical, jazz, and conference-style events",
             ],
