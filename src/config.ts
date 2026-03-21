@@ -2,7 +2,7 @@ export const siteConfig = {
     name: "Bix",
     fullName: "William Bix von Goeler",
     pronouns: "",
-    profilePhoto: "/portfolio/profile.jpeg",
+    profilePhoto: "/profile.jpeg",
     greeting: "Hey there, 👋",
     title: "Software Engineer & Comp-Sci Undergrad at Tufts",
     description: "portfolio website of William Bix von Goeler",
@@ -53,7 +53,7 @@ export const siteConfig = {
             name: "AI Advisor Widget Injected by C MITM-Proxy Server",
             description:
                 "Injects an LLM-powered academic advisor widget into the Tufts student portal by intercepting encrypted HTTPS traffic through a custom C mitm-proxy server. The proxy has a non-blocking `libev` based architecture allowing for simultaneous connections, and spoofs TLS certificates as a CA to read and modify the encrypted traffic. Intercepted pages are sent over Unix sockets to a Python server that injects the widget's JavaScript and handles backend requests. A *gpt-4.1-mini* agent answers student questions using RAG queries against a database of structured Tufts course summaries scraped from official sources. Uploaded PDF transcripts are parsed into structured JSON (e.g. GPA, major, lists of courses taken) using a seperate LLM and appended to the system prompt, while info from the users current page is parsed from the intercepted HTML using BeautifulSoup and included in each message for contextually relevant responses. Containerized with Docker for portable deployment.",
-            image: "/portfolio/projects/mitm-proxy.png",
+            image: "/projects/mitm-proxy.png",
             link: "https://github.com/bixvongoeler/llm_mitm_proxy",
             repo: "llm_mitm_proxy",
             skills: ["C Socket Programming", "Docker", "TLS/SSL", "Proxies", "LLMs", "Python"],
@@ -61,7 +61,7 @@ export const siteConfig = {
         {
             name: "Chordian: An Electric MIDI Accordion",
             description: "A wireless MIDI accordion built around dual ESP32 microcontrollers communicating via ESP-NOW. An Arduino Mega handles analog reads from 8 keys with soft potentiometers and FSRs, while the ESP32 processes and transmits TOF-based bellows data to a Max/MSP patch for MIDI conversion. Self-contained with battery power and laser-cut acrylic construction.",
-            image: "/portfolio/projects/chordian.png",
+            image: "/projects/chordian.png",
             link: "https://github.com/bixvongoeler/chordian",
             repo: "chordian",
             skills: ["Arduino", "ESP32", "I2C", "Embedded", "MIDI", "Wireless"],
@@ -70,7 +70,7 @@ export const siteConfig = {
             name: "2D Sand Simulation",
             description:
                 "A performant grid-based particle simulation modeling the behavior of sand, water, stone, and gas elements with physics interactions. Uses the RayLib C Graphics Library. Built using a modular OOP architecture with base classes for particle types and a centralized world grid managing the simulation loop.",
-            image: "/portfolio/projects/sand-sim.png",
+            image: "/projects/sand-sim.png",
             link: "https://github.com/bixvongoeler/sand_sim",
             repo: "sand_sim",
             skills: ["C++", "RayLib", "OOP", "CMake"],
@@ -79,7 +79,7 @@ export const siteConfig = {
             name: "FPGA Based Guitar Hero Game",
             description:
                 "A Guitar Hero inspired rhythm game implemented entirely in SystemVerilog on an iCE40 FPGA. Features VGA graphics output, buffered I2S audio playback from a MicroSD, realtime strum-gated note registration. Uses custom python tools for MIDI to note data conversion and direct writes of processed audio data to MicroSD card sectors.",
-            image: "/portfolio/projects/guitar-hero.png",
+            image: "/projects/guitar-hero.png",
             link: "https://github.com/bixvongoeler/es04_guitar_hero",
             repo: "es04_guitar_hero",
             skills: ["SystemVerilog", "FPGA", "I2C", "I2S Audio", "VGA"],
@@ -88,7 +88,7 @@ export const siteConfig = {
             name: "Graphical AI Robot-Vacuum Sim",
             description:
                 "A robot vacuum simulator controlled by a hierarchical behavior tree AI. Features dynamic dust accumulation, battery management with priority-based charging, spot and general cleaning modes, and a real-time GUI visualization of the discrete grid environment.",
-            image: "/portfolio/projects/roomba-sim.png",
+            image: "/projects/roomba-sim.png",
             link: "https://github.com/bixvongoeler/roomba_sim",
             repo: "roomba_sim",
             skills: ["Python", "Behavior Trees", "AI", "Pygame"],
