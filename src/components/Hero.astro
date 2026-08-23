@@ -4,6 +4,7 @@ import GitHubIcon from "../icons/github.svg";
 import LinkedInIcon from "../icons/linkedin.svg";
 import SocialLink from "./SocialLink.astro";
 import EmailButton from "./EmailButton.astro";
+import AboutCard from "./AboutCard.astro";
 ---
 
 <div
@@ -122,30 +123,41 @@ import EmailButton from "./EmailButton.astro";
     <div class="p-8 sm:p-12 md:p-16 lg:p-24">
         <!-- Desktop layout -->
         <div class="hidden md:grid grid-cols-12 gap-8 lg:gap-16 items-start animate-fade-in">
-            <div class="md:col-span-4 flex justify-end">
-                <img
-                    src={siteConfig.profilePhoto}
-                    alt={siteConfig.name}
-                    class="w-36 lg:w-44 xl:w-52 h-36 lg:h-44 xl:h-52 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg"
-                />
-            </div>
-            <div class="md:col-span-8">
-                <h1 class="font-bold tracking-tight text-gray-800 dark:text-slate-300">
-                    <span class="text-4xl lg:text-4xl font-medium">Hi, I'm </span>
-                    <span class="text-5xl ml-1 lg:text-5xl text-[var(--accent-color)]">{siteConfig.name}</span>
-                </h1>
-                <p class="mt-2 text-2xl lg:text-2xl">
-                    <span class="text-gray-700 dark:text-slate-400">{siteConfig.fullName}</span>
-                    <span class="text-gray-500 dark:text-slate-500">{siteConfig.pronouns}</span>
-                </p>
-                <p class="mt-1 text-base lg:text-lg text-gray-600 dark:text-slate-400">
-                    {siteConfig.title}
-                </p>
-                <div class="flex flex-wrap gap-3 mt-6">
-                    <SocialLink href={siteConfig.social.github} label="GitHub" icon={GitHubIcon} />
-                    <SocialLink href={siteConfig.social.linkedin} label="LinkedIn" icon={LinkedInIcon} />
-                    <EmailButton email={siteConfig.social.email} />
+            <!-- At xl this wrapper becomes a real column (photo stacked above text);
+                 below xl it is display:contents so photo/text stay direct grid children -->
+            <div class="contents xl:block xl:col-span-5">
+                <div class="md:col-span-4 flex justify-end xl:justify-start">
+                    <img
+                        src={siteConfig.profilePhoto}
+                        alt={siteConfig.name}
+                        class="w-36 lg:w-44 xl:w-52 h-36 lg:h-44 xl:h-52 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg"
+                    />
                 </div>
+                <div class="md:col-span-8 xl:mt-8">
+                    <h1 class="font-bold tracking-tight text-gray-800 dark:text-slate-300">
+                        <span class="text-4xl lg:text-4xl font-medium">Hi, I'm </span>
+                        <span class="text-5xl ml-1 lg:text-5xl text-[var(--accent-color)]">{siteConfig.name}</span>
+                    </h1>
+                    <p class="mt-2 text-2xl lg:text-2xl">
+                        <span class="text-gray-700 dark:text-slate-400">{siteConfig.fullName}</span>
+                        <span class="text-gray-500 dark:text-slate-500">{siteConfig.pronouns}</span>
+                    </p>
+                    <p class="mt-1 text-base lg:text-lg text-gray-600 dark:text-slate-400">
+                        {siteConfig.title}
+                    </p>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <SocialLink href={siteConfig.social.github} label="GitHub" icon={GitHubIcon} />
+                        <SocialLink href={siteConfig.social.linkedin} label="LinkedIn" icon={LinkedInIcon} />
+                        <EmailButton email={siteConfig.social.email} />
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Me beside the hero on wide screens (standalone section hidden at xl) -->
+            <div class="hidden xl:block xl:col-span-7">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-slate-50">About Me</h2>
+                <div class="w-[50px] h-[4px] mt-1 mb-4 rounded-full bg-[var(--accent-color)]"></div>
+                <AboutCard compact />
             </div>
         </div>
 

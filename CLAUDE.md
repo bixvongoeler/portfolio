@@ -97,10 +97,20 @@ When modifying components:
 
 The `src/config.ts` exports a `siteConfig` object with these sections:
 
-- Basic info: name, title, description, accentColor, darkAccentColor
+- Basic info: name, fullName, pronouns, profilePhoto, greeting, title, description, accentColor, darkAccentColor
+- sectionOrdering: string[] controlling section order (see `src/utils/sections.ts`)
+- tiltEffect: card tilt settings for vanilla-tilt (desktop only)
 - Social links: email, linkedin, github (all optional)
-- aboutMe: string
-- skills: string[]
-- projects: array of {name, description, link, skills}
-- experience: array of {company, title, dateRange, bullets}
+- aboutMe: string (newline-separated paragraphs, may contain inline HTML)
+- skillCategories: {languages, toolsAndLibraries}
+- projects: array of {name, summary, description, image, link, repo, skills} — `summary` is the ~2-sentence text on the condensed card; `description` is the full text shown in the expand popup
+- experienceCollapse: {enabled, visibleCount, peekPx} — Experience section starts collapsed to `visibleCount` entries with the next one peeking through a fade; only activates with ≥ visibleCount + 2 entries
+- experience: array of {company, title, dateRange, highlight, description?, bullets} — `highlight: true` gives the accent-border card treatment (used for the most recent role); optional `description` renders as an intro line above the bullets
 - education: array of {school, degree, dateRange, achievements}
+- hobbies: array of {name, description[]}
+
+## Section Behaviors
+
+- **About Me placement**: below the `xl` breakpoint, About Me is its own section; at `xl+` the standalone section (and its nav link) is hidden and the card renders beside the hero instead. The card markup lives in `AboutCard.astro`, shared by both placements.
+- **Experience collapse**: `Experience.astro` renders the full list server-side (no-JS fallback), then a script collapses it on load using a CSS `mask-image` fade and a Show more/less toggle.
+- **Project popups**: condensed cards open a native `<dialog>` (rendered as siblings of the cards, one per project) with the full description and a GitHub button; the repo pill on the card image is a direct link that does not open the popup.
